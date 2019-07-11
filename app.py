@@ -37,12 +37,11 @@ class InstagramBot:
             print("No pop-up was found.")
             return
 
-    def like_post(self):
-        hashtag = "conding"
+    def like_post(self, hashtag):
         self.bot.get(
             f"https://www.instagram.com/explore/tags/{hashtag}/?hl=en")
         time.sleep(3)
-        for i in range(1, 10):
+        for i in range(1, 5):
             self.bot.execute_script(
                 "window.scrollTo(0, document.body.scrollHeight)")
             time.sleep(3)
@@ -50,8 +49,7 @@ class InstagramBot:
         posts = self.bot.find_elements_by_class_name("v1Nh3.kIKUG._bz0w")
         links = [post.find_element_by_tag_name(
             'a').get_attribute("href") for post in posts]
-        print(links)
-        print(len(links))
+
         for link in links:
             self.bot.get(link)
             try:
@@ -62,16 +60,20 @@ class InstagramBot:
                 time.sleep(60)
 
 
-username = input("What is your Instagram username or email? : ")
-print("What's your password? (Your password will be hidden.) : ")
+username = input("\nWhat is your Instagram username or email?: ")
+print("What's your password? (Your password will be hidden.): ")
 try:
     password = getpass.getpass()
 except Exception as error:
     print('ERROR', error)
 
+hashtag = input('''Which hashtag would you like to search for? 
+(I will 'like' as many related posts as possible.): 
+''')
+
 # TODO: Check if login infos are valid
 
-ig_bot = InstagramBot("username", "password")
+ig_bot = InstagramBot(username, password)
 ig_bot.login()
 ig_bot.remove_pop_up()
-ig_bot.like_post()
+ig_bot.like_post(hashtag)
