@@ -3,17 +3,22 @@ Created an Instagram bot with Python using the SeleniumLibrary. The bot can auto
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine. This program runs on the console.
+These instructions will get you a copy of the project up and running on your local machine.
 
 ### Prerequisites
 
 - Python 3.7
 - Mozilla Firefox
 - mozilla/geckodriver
+- Selenium WebDriver
+
+### Installing Selenium
+```
+pip install selenium
+```
 
 ### Installing Gecko Driver
-
-Insert the Gecko Drive executable in your Python37 directory
+Download zip from https://github.com/mozilla/geckodriver/releases and insert the Gecko Drive executable in Python37 directory
 
 ```
 C:\Users\siberii\AppData\Local\Programs\Python\Python37
